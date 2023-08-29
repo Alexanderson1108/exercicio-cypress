@@ -3,7 +3,7 @@
 context('deve efetuar login corretamente', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/minha-conta/')
+        cy.visit('/minha-conta/')
     });
 
     it('realizar login completo', () => {
