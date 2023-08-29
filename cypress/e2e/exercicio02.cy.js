@@ -88,22 +88,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         cy.get('#payment_method_cod').click()
         cy.get('#place_order').click()
 
-        
-        
-
-
-
-
-
-
-
-
-
-
-        
-
-        
-
+        //tive um problema em colocar o .should apor finlaizar compra,pois o site estava demorando para carregar
 
     });
 
