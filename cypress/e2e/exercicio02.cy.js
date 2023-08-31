@@ -15,45 +15,7 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
     });
 
     it('Deve fazer um pedido na loja Ebac Shop de ponta a ponta', () => {
-        cy.get('[class="product-block grid"]').first().click()
-        cy.get('.button-variable-item-L').click()
-        cy.get('.button-variable-item-Blue').click()
-        cy.get('.single_add_to_cart_button').click()
-
-        cy.get('#primary-menu > .menu-item-629 > a').click()
-
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain' ,1)
-
-        //2º produto
-
-        cy.get('[class="product-block grid"]').contains('Atlas Fitness Tank').click()
-        cy.get('.button-variable-item-XS').click()
-        cy.get(':nth-child(2) > .value > .variable-items-wrapper > .variable-item').click()
-        cy.get('.single_add_to_cart_button').click()
-
-        cy.get('#primary-menu > .menu-item-629 > a').click()
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain' , 2)
-
-        //3º produto
-
-        cy.get(':nth-child(2) > .page-numbers').click()
-        cy.get('[class="product-block grid"]').first().click()
-        cy.get('.button-variable-item-XS').click()
-        cy.get('.button-variable-item-Blue').click()
-        cy.get('.single_add_to_cart_button').click()
-
-        cy.get('#primary-menu > .menu-item-629 > a').click()
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain' , 3)
-
-        //4º produto
-
-        cy.get(':nth-child(2) > .page-numbers').click()
-        cy.get('[class="product-block grid"]').contains('Balboa Persistence Tee').click()
-        cy.get('.button-variable-item-XS').click()
-        cy.get('.button-variable-item-Green').click()
-        cy.get('.single_add_to_cart_button').click()
-
-        cy.get('.dropdown-toggle > .mini-cart-items').should('contain' , 4)
+        cy.compras()
 
         //compra
 
@@ -86,9 +48,12 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
 
         cy.get('#terms').click()
         cy.get('#payment_method_cod').click()
-        cy.get('#place_order').click()
+        cy.get('#place_order').click( { force:true } )
+        cy.get('.page-title').should('pedido recebido')
 
-        //tive um problema em colocar o .should apor finlaizar compra,pois o site estava demorando para carregar
+        //tentei com o force mas a pagina demora a carregar mesmo assim, nao deixando eu finalizar e dando erro
+
+        
 
     });
 
